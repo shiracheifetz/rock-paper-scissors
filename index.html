@@ -18,14 +18,21 @@
         <p>Mouse: Hover over an image and click to make your choice.</p>
         <p>Keyboard: Press R for Rock, P for Paper, or S for Scissors.
         <p>If you want to start over at any time, just click the Play Again! button to reset the game.</p>
-        <div class="container">
-            <img src="rock.png" alt="rock">
-            <img src="paper.png" alt="paper">
-            <img src="scissors.png" alt="scissors">
-        </div>
+        <div class="game-container">
+            <div class="user-options">
+                <img src="rock.png" id="rock" class="option" alt="rock">
+                <img src="paper.png" id="paper" class="option" alt="paper">
+                <img src="scissors.png" id="scissors" class="option" alt="scissors">
+            </div>
+            
+            <div class="play-area">
+                <div id="user-choice"></div>
+                <div id="vs">VS</div>
+                <div id="computer-choice"></div>
+            </div>
         
         <p hidden>Placeholder - will display results</p>
-        <button class="play-again">Play Again!</button>
+        <button>Play Again!</button>
     </main>
     <script src="script.js"></script>
 </body>
