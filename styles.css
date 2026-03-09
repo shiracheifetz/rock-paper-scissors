@@ -1,12 +1,20 @@
+:root {
+  --primary-color: rgb(120, 174, 228)
+}
+
 body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+    margin: 0;
 }
 
 header{
-    background-color: rgb(120, 174, 228);
+    background-color: var(--primary-color);
     padding: 15px;
-    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    margin: 15px;
 }
 
 .container {
@@ -25,4 +33,20 @@ header{
 
 .container img:hover {
     transform: scale(1.2);
+}
+
+button {
+    display: flex;
+    margin: auto;
+    background-color: var(--primary-color);
+    font-size: 15px;
+    padding: 10px;
+    border-width: 1px;
+    border-radius: 18px;
+    transition: transform 0.3s ease; 
+}
+
+button:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);   
 }
