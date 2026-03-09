@@ -13,7 +13,8 @@
     <main>
         <h2>How to Play</h2>
         <p>The rules are simple! Select your move to challenge the computer. 
-            Remember: Rock crushes Scissors, Paper covers Rock, and Scissors cuts Paper.</p>
+            Remember: <strong>Rock</strong> crushes <strong>Scissors</strong>, <strong>Paper</strong> covers 
+            <strong>Rock</strong>, and <strong>Scissors</strong> cuts  <strong>Paper</strong>.</p>
         <h2>Controls</h2>
         <p>Mouse: Hover over an image and click to make your choice.</p>
         <p>Keyboard: Press R for Rock, P for Paper, or S for Scissors.
@@ -26,12 +27,16 @@
             </div>
             
             <div class="play-area">
-                <div id="user-choice"></div>
+                <div id="user-choice">
+                    <img src="" alt="user's choice">
+                </div>
                 <div id="vs">VS</div>
-                <div id="computer-choice"></div>
+                <div id="computer-choice">
+                    <img src="" alt="computer's choice">
+                </div>
             </div>
         
-        <p hidden>Placeholder - will display results</p>
+        <p hidden id="result">Placeholder - will display results</p>
         <button>Play Again!</button>
     </main>
     <script src="script.js"></script>
