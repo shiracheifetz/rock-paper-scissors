@@ -25,12 +25,16 @@ function playGame(selectionId) {
     computerImg.src = computerChoice + ".png";
     computerImg.style.visibility = "visible";
 
-    if ((selectionId=="rock" && computerChoice=="scissors") ||
-        (selectionId=="paper" && computerChoice=="rock") ||
-        (selectionId=="scissors" && computerChoice=="paper")) {
+    displayResult(selectionId, computerChoice)
+}
+
+function displayResult(userChoice, computerChoice) {
+    if ((userChoice=="rock" && computerChoice=="scissors") ||
+        (userChoice=="paper" && computerChoice=="rock") ||
+        (userChoice=="scissors" && computerChoice=="paper")) {
         resultText.innerHTML = "You won!"
     }
-    else if (selectionId == computerChoice) {
+    else if (userChoice == computerChoice) {
         resultText.innerHTML = "Tie!"
     }
     else {
@@ -38,9 +42,25 @@ function playGame(selectionId) {
     }
 }
 
-const playBtn = document.getElementById("play-btn")
+document.addEventListener("keydown", function(e) {
+    const character = e.key;
+    console.log(character);
+    let userChoice;
+    if (character == "r"){
+        userChoice = "rock";
+    }
+    else if (character == "p"){
+        userChoice = "paper";
+    }
+    else if (character == "s"){
+        userChoice = "scissors";
+    }
+    if (userChoice) {
+        playGame(userChoice);
+    }
+});
 
-playBtn.addEventListener('click', function() {
+document.getElementById("play-btn").addEventListener("click", () => {
     imageList.forEach(img => img.classList.remove("locked", "selected"));
     userImg.style.visibility = "hidden";
     computerImg.style.visibility = "hidden";
