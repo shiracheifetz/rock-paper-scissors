@@ -15,6 +15,7 @@ imageList.forEach(button => {
 function playGame(selectionId) {
     userImg.classList.add("fade-in-element");
     userImg.src = selectionId + ".png";
+    userImg.style.visibility = "visible";
 
     const choices = ["rock", "paper", "scissors"];
     const computerChoiceIndex = Math.floor(Math.random()*3);
@@ -22,28 +23,26 @@ function playGame(selectionId) {
 
     computerImg.classList.add("fade-in-element");
     computerImg.src = computerChoice + ".png";
+    computerImg.style.visibility = "visible";
 
-    if (
-        (selectionId=="rock" && computerChoice=="scissors") ||
+    if ((selectionId=="rock" && computerChoice=="scissors") ||
         (selectionId=="paper" && computerChoice=="rock") ||
-        (selectionId=="scissors" && computerChoice=="paper")
-    ) {
+        (selectionId=="scissors" && computerChoice=="paper")) {
         resultText.innerHTML = "You won!"
     }
-    else if (selectionId == choices[computerChoiceIndex]) {
+    else if (selectionId == computerChoice) {
         resultText.innerHTML = "Tie!"
     }
     else {
-        resultText.innerHTML = "Computer won."
+        resultText.innerHTML = "Computer won!"
     }
 }
 
 const playBtn = document.getElementById("play-btn")
 
 playBtn.addEventListener('click', function() {
-    imageList.forEach(img => img.classList.remove("locked"));
-    imageList.forEach(img => img.classList.remove("selected"));
-    userImg.src = "";
-    computerImg.src = "";
+    imageList.forEach(img => img.classList.remove("locked", "selected"));
+    userImg.style.visibility = "hidden";
+    computerImg.style.visibility = "hidden";
     resultText.innerHTML = "";
 });
