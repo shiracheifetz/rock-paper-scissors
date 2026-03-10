@@ -1,6 +1,7 @@
 const imageList = document.querySelectorAll(".option");
 const userContainer = document.getElementById("user-choice");
 const computerContainer = document.getElementById("computer-choice");
+const vsContainer = document.getElementById("vs");
 const userImg = userContainer.querySelector("img");
 const computerImg = computerContainer.querySelector("img");
 let resultText = document.getElementById("result");
@@ -37,6 +38,7 @@ function playGame(selectionId) {
     userImg.classList.add("fade-in-element");
     userImg.src = selectionId + ".png";
     userContainer.style.visibility = "visible";
+    vsContainer.style.visibility = "visible";
 
     const choices = ["rock", "paper", "scissors"];
     const computerChoiceIndex = Math.floor(Math.random()*3);
@@ -67,5 +69,6 @@ document.getElementById("play-btn").addEventListener("click", () => {
     imageList.forEach(img => img.classList.remove("locked", "selected"));
     userContainer.style.visibility = "hidden";
     computerContainer.style.visibility = "hidden";
+    vsContainer.style.visibility = "visible";
     resultText.innerHTML = "";
 });
