@@ -1,21 +1,42 @@
 const imageList = document.querySelectorAll(".option");
-const userImg = document.querySelector("#user-choice img");
-const computerImg = document.querySelector("#computer-choice img");
+const userContainer = document.getElementById("user-choice");
+const computerContainer = document.getElementById("computer-choice");
+const userImg = userContainer.querySelector("img");
+const computerImg = computerContainer.querySelector("img");
 let resultText = document.getElementById("result");
 
 imageList.forEach(button => {
     button.addEventListener("click", function(e) {
-        const selectedElement = e.currentTarget;
-        selectedElement.classList.add("selected");
-        imageList.forEach(img => img.classList.add("locked"));
-        playGame(selectedElement.id);
+        imageList.forEach(img => img.classList.remove("selected"));
+        playGame(e.target.id);
     });
 });
 
+document.addEventListener("keydown", function(e) {
+    imageList.forEach(img => img.classList.remove("selected"));
+    const character = e.key;
+    console.log(character);
+    let userChoice;
+    if (character == "r"){
+        userChoice = "rock";
+    }
+    else if (character == "p"){
+        userChoice = "paper";
+    }
+    else if (character == "s"){
+        userChoice = "scissors";
+    }
+    if (userChoice) {
+        playGame(userChoice);
+    }
+});
+
 function playGame(selectionId) {
+    document.getElementById(selectionId).classList.add("selected");
+    imageList.forEach(img => img.classList.add("locked"));
     userImg.classList.add("fade-in-element");
     userImg.src = selectionId + ".png";
-    userImg.style.visibility = "visible";
+    userContainer.style.visibility = "visible";
 
     const choices = ["rock", "paper", "scissors"];
     const computerChoiceIndex = Math.floor(Math.random()*3);
@@ -23,7 +44,7 @@ function playGame(selectionId) {
 
     computerImg.classList.add("fade-in-element");
     computerImg.src = computerChoice + ".png";
-    computerImg.style.visibility = "visible";
+    computerContainer.style.visibility = "visible";
 
     displayResult(selectionId, computerChoice)
 }
@@ -42,27 +63,9 @@ function displayResult(userChoice, computerChoice) {
     }
 }
 
-document.addEventListener("keydown", function(e) {
-    const character = e.key;
-    console.log(character);
-    let userChoice;
-    if (character == "r"){
-        userChoice = "rock";
-    }
-    else if (character == "p"){
-        userChoice = "paper";
-    }
-    else if (character == "s"){
-        userChoice = "scissors";
-    }
-    if (userChoice) {
-        playGame(userChoice);
-    }
-});
-
 document.getElementById("play-btn").addEventListener("click", () => {
     imageList.forEach(img => img.classList.remove("locked", "selected"));
-    userImg.style.visibility = "hidden";
-    computerImg.style.visibility = "hidden";
+    userContainer.style.visibility = "hidden";
+    computerContainer.style.visibility = "hidden";
     resultText.innerHTML = "";
 });
